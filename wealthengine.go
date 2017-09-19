@@ -39,7 +39,7 @@ type AddressLookupScore struct {
 type EmailLookup struct {
 	Email      string `json:"email"`
 	Last_name  string `json:"last_name"`
-	first_name string `json:"first_name"`
+	First_name string `json:"first_name"`
 }
 
 // A lookup by email and name for use with scoring endpoint
@@ -185,35 +185,35 @@ type Giving struct {
 }
 
 type Input struct {
-		Output_type string `json:"output_type"`
-		Endpoint string `json:"endpoint"`
-		Environment string `json:"environment"`
-		Query struct {
-			Email string `json:"email"`
-			First_name string `json:"first_name"`
-			Last_name string 	`json:"last_name"`
-			Address_line1 string `json:"address_line1"`
-			Address_line2 string `json:"address_line2"`
-			City string `json:"city"`
-			State string `json:"state"`
-			Zip string `json:"zip"`
-			Phone string `json:"phone"`
-			Models string `json:"model"`
-		}
+	Output_type string `json:"output_type"`
+	Endpoint    string `json:"endpoint"`
+	Environment string `json:"environment"`
+	Query       struct {
+		Email         string `json:"email"`
+		First_name    string `json:"first_name"`
+		Last_name     string `json:"last_name"`
+		Address_line1 string `json:"address_line1"`
+		Address_line2 string `json:"address_line2"`
+		City          string `json:"city"`
+		State         string `json:"state"`
+		Zip           string `json:"zip"`
+		Phone         string `json:"phone"`
+		Models        string `json:"model"`
 	}
+}
 
 type Score struct {
 	Model string `json:"model"`
-	Score int `json:"score"`
+	Score int    `json:"score"`
 }
 
 type ScoreProfile struct {
-	Id int `json:"id"`
+	Id     int     `json:"id"`
 	Scores []Score `json:"scores"`
 }
 
 type ScoredProfile struct {
-	Input Input `json:"input"`
+	Input   Input        `json:"input"`
 	Profile ScoreProfile `json:"profile"`
 }
 
@@ -247,7 +247,7 @@ type BatchLookup struct {
 }
 
 type BatchProfile struct {
-	Input Input `json:"input"`
+	Input   Input   `json:"input"`
 	Profile Profile `json:"profile"`
 }
 
@@ -571,7 +571,7 @@ func (w *WealthEngine) MakeBatchRequest(b *Batch, path string) (*BatchID, error)
 		return nil, mErr
 	}
 
-	req, buildErr :=w.FormatRequest(j, path)
+	req, buildErr := w.FormatRequest(j, path)
 
 	if buildErr != nil {
 		return nil, buildErr
